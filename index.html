@@ -6,11 +6,135 @@
     <title>Safwan Iqbal - Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        #navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem; /* Reduced from 2rem */
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: -3px; /* Reduced gap */
+            padding: 2px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            z-index: 600;
+            transition: opacity 0.3s ease;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 22px; /* Slightly reduced width */
+            height: 2px; /* Thinner bars */
+            background: var(--text-light);
+            transition: transform 0.3s ease;
+        }
+
+        .hamburger.active {
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -250px; /* Start off-screen */
+                height: 100vh;
+                width: 250px;
+                background: var(--card-bg);
+                flex-direction: column;
+                padding: 60px 15px;
+                gap: 0.5rem; /* Reduced gap for mobile */
+                transition: transform 0.3s ease-in-out;
+                box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+            }
+
+            .nav-links.active {
+                transform: translateX(-250px);
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 10px 15px;
+                color: var(--text-light);
+                border-radius: 4px;
+                width: 100%;
+            }
+
+            .nav-links a:hover {
+                background: var(--primary-color);
+                color: white;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger span {
+                display: block;
+                width: 25px;
+                height: 3px;
+                background: var(--text-light);
+                transition: 0.3s;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(8px, 6px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -5px);
+            }
+        }
+    </style>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <nav id="navbar">
         <div class="nav-content">
             <div class="logo">Safwan Iqbal</div>
+            <button class="hamburger" id="menuToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -18,14 +142,8 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#business">Business</a></li>
-                <li><a href="#blogs">Blogs</a></li>
-                <li><a href="#hobbies">Hobbies</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="hamburger" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
     </nav>
 
@@ -127,7 +245,41 @@
                 <p>How artificial intelligence is transforming industries in Pakistan...</p>
                 <a href="blogs/ai-economy.html" class="read-more">Read More</a>
             </article>
-            <!-- Add remaining new blog entries similarly -->
+            <article class="blog-card">
+                <h3>The Industrial Heart of Pakistan: Faisalabad</h3>
+                <p>Exploring the economic powerhouse of Pakistan...</p>
+                <a href="blogs/faisalabad.html" class="read-more">Read More</a>
+            </article>
+            <article class="blog-card">
+                <h3>Hidden Gems of Faisalabad</h3>
+                <p>Must-visit places in the Manchester of Pakistan...</p>
+                <a href="blogs/placesinfaisalabad.html" class="read-more">Read More</a>
+            </article>
+            <article class="blog-card">
+                <h3>Traditional vs Modern Faisalabad</h3>
+                <p>A city in transition: balancing heritage with progress...</p>
+                <a href="blogs/fsd.html" class="read-more">Read More</a>
+            </article>
+            <article class="blog-card">
+                <h3>Social Media's Impact on Society</h3>
+                <p>How digital platforms are reshaping our culture...</p>
+                <a href="blogs/socialmedia.html" class="read-more">Read More</a>
+            </article>
+            <article class="blog-card">
+                <h3>Respect for Elders: A Declining Value?</h3>
+                <p>Examining changes in traditional family values...</p>
+                <a href="blogs/elders.html" class="read-more">Read More</a>
+            </article>
+            <article class="blog-card">
+                <h3>Traffic Rules Everyone Ignores</h3>
+                <p>Essential rules for safer roads in Pakistan...</p>
+                <a href="blogs/traffic.html" class="read-more">Read More</a>
+            </article>
+            <article class="blog-card">
+                <h3>Rise of Ride-Sharing in Pakistan</h3>
+                <p>How app-based transport is changing urban mobility...</p>
+                <a href="blogs/ridesharing.html" class="read-more">Read More</a>
+            </article>
             
             <!-- Existing blog entries -->
             <article class="blog-card">
@@ -217,19 +369,42 @@
 
     <script src="main.js"></script>
     <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.querySelector('.nav-links');
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.querySelector('.nav-links');
+            const body = document.body;
+            let lastScroll = 0;
 
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-        });
+            function toggleMenu(show) {
+                menuToggle.classList.toggle('active', show);
+                navLinks.classList.toggle('active', show);
+                body.style.overflow = show ? 'hidden' : '';
+            }
 
-        // Close menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                menuToggle.classList.remove('active');
+            menuToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = navLinks.classList.contains('active');
+                toggleMenu(!isOpen);
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+                    toggleMenu(false);
+                }
+            });
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => toggleMenu(false));
+            });
+
+            // Prevent sidebar hiding on scroll
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.pageYOffset;
+                if (navLinks.classList.contains('active')) {
+                    lastScroll = currentScroll;
+                    return;
+                }
+                lastScroll = currentScroll;
             });
         });
     </script>
